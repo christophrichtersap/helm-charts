@@ -1,0 +1,7 @@
+global:
+  region: testregion
+image:
+  repository: mytest
+crichterSimpleWebserver:
+  user: mytest
+  secretuser: mytest

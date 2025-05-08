@@ -1,0 +1,8 @@
+apiVersion: v2
+name: crichter-simple-webserver
+version: 0.0.1
+description: This is a simple webserver for testing purposes.
+dependencies:
+  - name: owner-info
+    repository: oci://keppel.eu-de-1.cloud.sap/ccloud-helm
+    version: 0.2.0

@@ -1,0 +1,33 @@
+# Deployment K8S manifest for the simple webserver
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.name }}
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name }}
+    spec:
+      containers:
+      - name: {{ .Values.name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: 8000
+        imagePullPolicy: "{{ .Values.image.pullPolicy }}"
+        env:
+          - name: SECRETUSER
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.name }}
+                key: secretuser
+          - name: USER
+            value: {{ required ".Values.crichterSimpleWebserver.user variable is missing" $.Values.crichterSimpleWebserver.user | quote }}

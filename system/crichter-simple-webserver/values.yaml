@@ -1,0 +1,16 @@
+owner-info:
+  support-group: compute
+  maintainers:
+    - Christoph Richter
+    - Marcel Gaedigk
+    - Erik Schliewe
+  helm-chart-url: https://github.com/sapcc/helm-charts/tree/master/system/crichter-simple-webserver
+name: crichter-simple-webserver
+namespace: crichter
+image:
+  repository:
+  tag: "latest"
+  pullPolicy: Always
+crichterSimpleWebserver:
+  user:
+  secretuser:
